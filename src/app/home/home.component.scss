@@ -1,0 +1,53 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+}
+
+.sidebar {
+  // width: 160px;
+  padding: 15px 10px;
+  .logo {
+    background-color: white;
+    border-radius: 5px;
+    padding: 3px 2px 2px 3px;
+    img {
+      width: 160px;
+      height: 70px;
+    }
+  }
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  .toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 70px;
+    .profile {
+      flex: 3;
+      #profile-photo {
+        width: 50px;
+        margin-right: 10px;
+        border-radius: 10px;
+      }
+      .email {
+        font-size: 12px;
+      }
+    }
+    .buttons {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
+  .content {
+
+  }
+}

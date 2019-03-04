@@ -1,5 +1,28 @@
-Login!
-
-<button (click)="logIn()">
-  Log In
-</button>
+<div class="main">
+  <div class="logo">
+    <img src="../assets/look-logo.png">
+  </div>
+  <div class="login-form">
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-outline-light btn-block">
+        Sign In
+      </button>
+      <button type="click" class="btn btn-link btn-block" id="forgot-password">
+        Forgot your password?
+      </button>
+    </form>
+  </div>
+</div>
+<div class="footer">
+  <button type="click" class="btn" (click)="signInWithGoogle()">
+  </button>
+  <div id="agree-to">
+    I agree to <a href="#">Privacy Policy</a> and <a href="#">Terms</a>.
+  </div>
+</div>

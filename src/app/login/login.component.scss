@@ -1,0 +1,80 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(#34B8EE 15%, #1283B2);
+}
+
+.main {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .logo {
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 65px;
+    padding: 3px 2px 2px 3px;
+    img {
+      width: 166px;
+      height: 75px;
+    }
+  }
+
+  .login-form {
+    width: 300px;
+    .form-group {
+      margin-bottom: 11px;
+    }
+    input {
+      height: 33px;
+      border: 0px;
+      border-radius: 3px;
+      background-color: #A3D9ED;
+      color: black;
+      font-size: 12px;
+    }
+    button {
+      border-radius: 3px;
+      font-size: 12px;
+    }
+    #forgot-password {
+      color: white;
+    }
+    #forgot-password:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.footer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 40px;
+  button {
+    height: 43px;
+    width: 190px;
+    padding: 0px;
+    border: 0px;
+    background-image: url('../../assets/btn-google-signin.png');
+    background-size: cover;
+    font-size: 12px;
+  }
+  #agree-to {
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 300;
+    color: #B6E8FA;
+    text-align: center;
+    a {
+      text-decoration: underline;
+      color: white;
+    }
+  }
+}

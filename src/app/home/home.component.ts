@@ -8,27 +8,19 @@ import { RoutingService } from '../services/routing.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  private user: any;
+  private profile: any;
 
   constructor(
-    private auth: AuthService
+    private auth: AuthService,
+    private routing: RoutingService,
   ) { }
 
   ngOnInit() {
-    console.log('HomeComponent');
-    this.user = this.auth.profile;
-    console.log(this.user);
-    this.auth.getAuthState()
-      .subscribe(state => {
-        console.log(state);
-        if (!state) {
-          this.routing.goOut();
-        }
-      });
+    this.profile = this.auth.user;
+    console.log(this.profile);
   }
 
-  logOut(): void {
-    this.auth.logOut();
+  signOut(): void {
+    this.auth.signOut();
   }
 }

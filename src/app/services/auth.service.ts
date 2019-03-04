@@ -1,47 +1,52 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private user: Observable<firebase.User> = null;
-  profile: firebase.User = null;
+  private authState: Observable<any> = null;
+  user: any = null;
+  profile: any = null;
 
   constructor(
     public afAuth: AngularFireAuth,
     private router: Router,
   ) {
-    this.user = afAuth.user;
-    this.user.subscribe(user => {
+    this.authState = afAuth.user;
+    this.authState.subscribe(user => {
       console.log(user);
+      this.user = user;
       if (user) {
-        this.profile = {
-          name: user.displayName,
-          email: user.email,
-          photoURL: user.providerData[0].photoURL,
-        };
+        this.router.navigate(['home']);
       } else {
-        this.profile = null;
+        this.router.navigate(['login']);
       }
-    })
-    // firebase.auth().getRedirectResult()
-    // firebase.auth().onAuthStateChanged()
+    });
   }
 
-  logIn() {
+  get isAuthenticated() {
+    return this.user !== null;
+  }
+
+  getAuthState() {
+    return this.authState;
+  }
+
+  signInWithGoogle() {
     let provider = new firebase.auth.GoogleAuthProvider();
-    this.afAuth.auth.signInWithRedirect(provider);
+    this.afAuth.auth.signInWithPopup(provider)
+      .then(result => {
+        this.router.navigate(['home']);
+      })
+      .catch(err => console.log(err));
   }
 
-  getAuthState(): Observable<firebase.User> {
-    return this.user;
-  }
-
-  logOut() {
+  signOut() {
+    this.user = null;
     this.afAuth.auth.signOut();
   }
 

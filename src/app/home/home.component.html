@@ -1,6 +1,35 @@
-Home!
-<button (click)="logOut()">Log Out</button>
+<div class="sidebar">
+  <div class="logo">
+    <img src="../assets/look-logo.png">
+  </div>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link active" href="home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="home">Class</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="home">Item 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="home" tabindex="-1" aria-disabled="true">Item 2</a>
+    </li>
+  </ul>
+</div>
+<div class="main">
+  <div class="toolbar">
+    <div class="profile">
+      <img id="profile-photo" [src]="profile.photoURL">
+      {{profile.displayName}}
+      <span class="email">{{profile.email}}</span>
+    </div>
+    <div class="buttons">
+      <button class="btn btn-outline-dark btn-sm" (click)="signOut()">Log Out</button>
+    </div>
+  </div>
+  <div class="content">
 
-{{user.name}}
 
-<img [src]="user.photoURL">
+  </div>
+</div>

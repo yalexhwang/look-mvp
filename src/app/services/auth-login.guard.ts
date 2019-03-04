@@ -4,17 +4,18 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthLoginGuard implements CanActivate {
 
   constructor(
     private router: Router,
     private auth: AuthService,
   ) {}
 
-  canActivate(): Observable<boolean> | boolean  {
-    if (!this.auth.isAuthenticated) {
-      console.log('go back to login');
-      this.router.navigate(['login']);
+  canActivate(): Observable<boolean> | boolean {
+    console.log(this.auth.isAuthenticated);
+    if (this.auth.isAuthenticated) {
+      console.log('redirect to home');
+      this.router.navigate(['home']);
       return false;
     }
     return true;
